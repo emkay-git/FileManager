@@ -45,7 +45,7 @@ public class FileList {
                 Log.i("CusttomError","Null");
             }
 
-           data  = new String[fileList.length][2];
+           data  = new String[fileList.length][3];
             for(int i =0; i< fileList.length;i++)
             {
                 String baseName[]=  fileList[i].toString().split("/");
@@ -54,11 +54,13 @@ public class FileList {
                 if(fileList[i].isDirectory())
                 {
                     data[i][1] = Integer.toString(fileList[i].listFiles().length)+" files";
-                    data[i][2] =
+                    data[i][2] = "folder";
                 }
                 else
                 {
                     data[i][1] = Integer.toString((int)fileList[i].length()/1024)+" Kb";
+                    int length = fileList[i].toString().length();
+                    data[i][2] = fileList[i].toString().substring(length-3,length);
                 }
             }
 

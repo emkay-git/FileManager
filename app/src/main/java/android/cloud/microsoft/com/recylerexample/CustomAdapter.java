@@ -23,11 +23,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private final LayoutInflater inflater;
     View view;
     MyViewHolder holder;
-    private Context context;
     MainActivity activity;
     Stack<String> folderHistory;
     FolderHistory fh;
-
+    Context context;
     public CustomAdapter(Context context, MainActivity activ) {
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -49,8 +48,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         FilePOJO list_items = list_members.get(position);
         holder.user_name.setText(list_items.getFileName());
         holder.content.setText(list_items.getDetail());
-        holder.image.setImageResource(R.id.);
+        holder.image.setImageResource(getImageId(list_items.getFileImage()));
 
+    }
+
+    public int getImageId(String s)
+    {
+
+        return context.getResources().getIdentifier("drawable/" + s, null, context.getPackageName());
     }
 
     @Override

@@ -4,14 +4,9 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 import java.io.File;
 import java.util.ArrayList;
 
@@ -56,7 +51,7 @@ public class MainActivity extends Activity {
             //Values are binded using set method of the POJO class
             pojoObject.setFileName(data[i][0]);
             pojoObject.setDetail(data[i][1]);
-            pojoObject.setFileName(data[i][2]);
+            pojoObject.setFileImage(data[i][2]);
             //After setting the values, we add all the Objects to the array
             //Hence, listConentArr is a collection of Array of POJO objects
             listContentArr.add(pojoObject);
