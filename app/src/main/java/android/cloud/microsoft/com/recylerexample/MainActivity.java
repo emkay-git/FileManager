@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.i("Steps", "onCreate");
         recyclerView = (RecyclerView)findViewById(R.id.recycleView);
         //As explained in the tutorial, LineatLayoutManager tells the RecyclerView that the view
         //must be arranged in linear fashion
@@ -30,15 +32,12 @@ public class MainActivity extends Activity {
         //Method call for populating the view
         populateRecyclerViewValues("root");
 
+
     }
 
     public void populateRecyclerViewValues(String fileName) {
-        /** This is where we pass the data to the adpater using POJO class.
-         *  The for loop here is optional. I've just populated same data for 50 times.
-         *  You can use a JSON object request to gather the required values and populate in the
-         *  RecyclerView.
-         * */
 
+        Log.i("Steps", "populateRecyleverView");
         listContentArr = new ArrayList<>();
         FileList l = new FileList(fileName);
         String [][] data = l.getFileList();

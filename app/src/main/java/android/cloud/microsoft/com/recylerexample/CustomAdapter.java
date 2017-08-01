@@ -1,6 +1,5 @@
 package android.cloud.microsoft.com.recylerexample;
 
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,14 +32,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         activity = activ;
         fh = new FolderHistory();
         folderHistory = fh.getHistory();
+        Log.i("Steps", "CustomAdapterConstructor");
     }
 
     @Override
     public CustomAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+        Log.i("Steps", "onCreateViewHolder");
         view = inflater.inflate(R.layout.custom_row, parent, false);
+
         holder = new MyViewHolder(view);
         return holder;
+
     }
 
     @Override
@@ -49,7 +52,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.user_name.setText(list_items.getFileName());
         holder.content.setText(list_items.getDetail());
         holder.image.setImageResource(getImageId(list_items.getFileImage()));
-
+        Log.i("Steps","onBindViewHolder");
     }
 
     public int getImageId(String s)
@@ -59,16 +62,29 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()  {
+        Log.i("Steps","getItemCount");
         return list_members.size();
     }
 
 
     public void setListContent(ArrayList<FilePOJO> list_members) {
         this.list_members = list_members;
+        Log.i("Steps","setListContent");
         notifyItemRangeChanged(0, list_members.size());
 
     }
+
+    public boolean goBack() {
+
+        if (folderHistory.isEmpty())
+            return true;
+        folderHistory.pop();
+        if (!folderHistory.isEmpty())
+            activity.populateRecyclerViewValues(folderHistory.peek());
+        return false;
+    }
+
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView user_name, content, time;
@@ -82,12 +98,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             content = (TextView) itemView.findViewById(R.id.content);
             time = (TextView) itemView.findViewById(R.id.time);
             image = (ImageView) itemView.findViewById(R.id.picture);
+            Log.i("Steps","MyViewHolderConstructor");
         }
 
         @Override
         public void onClick(View v) {
 
-
+            Log.i("Steps","onClick");
             TextView a = (TextView) v.findViewById(R.id.user_name);
             String clicked = a.getText().toString();
             Log.i("CustomError2", clicked);
@@ -119,15 +136,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     }
 
-    public boolean goBack() {
-
-        if (folderHistory.isEmpty())
-            return true;
-        folderHistory.pop();
-        if (!folderHistory.isEmpty())
-            activity.populateRecyclerViewValues(folderHistory.peek());
-        return false;
-    }
 
 }
 

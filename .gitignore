@@ -1,7 +1,41 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
-/build
-/captures
+# Built application files
+./RecyclerExample//*/build/
+
+# Crashlytics configuations
+./RecyclerExample/com_crashlytics_export_strings.xml
+
+# Local configuration file (sdk path, etc)
+./RecyclerExample/local.properties
+
+# Gradle generated files
+./RecyclerExample/.gradle/
+
+# Signing files
+./RecyclerExample/.signing/
+
+# User-specific configurations
+./RecyclerExample/.idea/libraries/
+./RecyclerExample/.idea/workspace.xml
+./RecyclerExample/.idea/tasks.xml
+./RecyclerExample/.idea/.name
+./RecyclerExample/.idea/compiler.xml
+./RecyclerExample/.idea/copyright/profiles_settings.xml
+./RecyclerExample/.idea/encodings.xml
+./RecyclerExample/.idea/misc.xml
+./RecyclerExample/.idea/modules.xml
+./RecyclerExample/.idea/scopes/scope_settings.xml
+./RecyclerExample/.idea/vcs.xml
+./RecyclerExample/*.iml
+
+# OS-specific files
+./RecyclerExample/.DS_Store
+./RecyclerExample/.DS_Store?
+./RecyclerExample/._*
+./RecyclerExample/.Spotlight-V100
+./RecyclerExample/.Trashes
+./RecyclerExample/ehthumbs.db
+./RecyclerExample/Thumbs.db
+
+.gitignore
+.class
+*~
